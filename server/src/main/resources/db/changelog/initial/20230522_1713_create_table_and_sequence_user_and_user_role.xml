@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+    <property name="seq_max_value" value="9999999999999999999999999999"/>
+    <property name="seq_increment_by" value="1"/>
+    <changeSet author="rubachj" id="create_role_user_sequence">
+        <createSequence incrementBy="${seq_increment_by}" maxValue="${seq_max_value}"
+                        sequenceName="SEQ_ROLE_USER" startValue="${seq_increment_by}"/>
+    </changeSet>
+    <changeSet author="rubachj" id="create_role_user_table">
+        <createTable tableName="ROLE_USER">
+            <column name="ID" type="NUMBER(19, 0)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="ROLE" type="VARCHAR2(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="rubachj" id="create_app_user_sequence">
+        <createSequence incrementBy="${seq_increment_by}" maxValue="${seq_max_value}"
+                        sequenceName="SEQ_APP_USER" startValue="${seq_increment_by}"/>
+    </changeSet>
+    <changeSet author="rubachj" id="create_app_user_table">
+        <createTable tableName="APP_USER">
+            <column name="ID" type="NUMBER(19, 0)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="FIRSTNAME" type="VARCHAR2(1000)"/>
+            <column name="LASTNAME" type="VARCHAR2(1000)"/>
+            <column name="EMAIL" type="VARCHAR2(1000)"/>
+            <column name="PASSWORD" type="VARCHAR2(255)"/>
+            <column name="ID_ROLE_USER" type="NUMBER(19,0)">
+                <constraints nullable="false" foreignKeyName="FK_USER_ROLE_USER"
+                             references="ROLE_USER(ID)"/>
+            </column>
+            <column name="ACCOUNT_EXPIRED" type="NUMBER(1,0)"/>
+            <column name="ACCOUNT_LOCKED" type="NUMBER(1,0)"/>
+            <column name="ENABLED" type="NUMBER(1,0)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

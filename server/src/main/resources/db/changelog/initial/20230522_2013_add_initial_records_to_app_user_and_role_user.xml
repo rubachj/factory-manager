@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+    <changeSet author="rubachj" id="add_admin_record_to_role_user">
+        <insert tableName="ROLE_USER">
+            <column name="ID" valueComputed="SEQ_ROLE_USER.NEXTVAL"/>
+            <column name="ROLE" value="ADMIN"/>
+        </insert>
+    </changeSet>
+    <changeSet author="rubachj" id="add_admin_user_to_app_user">
+        <insert tableName="APP_USER">
+            <column name="ID" valueComputed="SEQ_APP_USER.NEXTVAL"/>
+            <column name="FIRSTNAME" value="Admin"/>
+            <column name="LASTNAME" value="Admin"/>
+            <column name="EMAIL" value="janek.rubach@gmail.com"/>
+            <column name="PASSWORD" value="$2a$10$p2jesVeAVZn7AKJZcFvig.uEHwVjP884fhHIMhycsnUNHz57Co6aS"/>
+            <column name="ID_ROLE_USER" value="1"/>
+            <column name="ACCOUNT_EXPIRED" value="0"/>
+            <column name="ACCOUNT_LOCKED" value="0"/>
+            <column name="ENABLED" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

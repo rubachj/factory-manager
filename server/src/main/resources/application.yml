@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: system
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    password: oracle
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
