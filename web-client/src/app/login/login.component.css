@@ -1,8 +1,8 @@
-form{
-    border-radius: 30px;
-    border: solid 2px;
-    width: 60vh;
-    overflow: hidden;
+form {
+  border-radius: 30px;
+  border: solid 2px;
+  width: 60vh;
+  overflow: hidden;
 }
 
 .form_header {
@@ -14,10 +14,10 @@ form{
 }
 
 .form_body {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 img {
@@ -25,17 +25,17 @@ img {
   width: 60px;
 }
 
-input, button{
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 30px;
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 30px;
 }
 
-button{
+input[type=submit] {
   background-color: #9def7a;
   cursor: pointer;
 }
 
-button:hover{
+input[type=submit]:hover {
   background-color: #b4e79e;
 }
