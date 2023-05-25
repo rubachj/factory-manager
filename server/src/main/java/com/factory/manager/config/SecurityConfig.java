@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .cors(AbstractHttpConfigurer::disable)
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/v1/auth/**").
+                        auth.requestMatchers("/auth/**").
                                 permitAll()
                                 .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider)
