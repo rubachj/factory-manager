@@ -1,0 +1,18 @@
+{
+  "login": {
+    "header": {
+      "factoryManager": "Factory Manager"
+    },
+    "message": {
+      "success": "Witaj w serwisie Factory Manager.",
+      "failed": "Podano nieprawidłowy login lub hasło!"
+    },
+    "placeholder": {
+      "email": "e-mail...",
+      "password": "hasło..."
+    },
+    "value": {
+      "login": "Zaloguj się"
+    }
+  }
+}

@@ -4,7 +4,8 @@ import { HttpService } from '../service/http.service';
 import { AuthenticateRequestDto } from '../core/model/auth/AuthenticateRequestDto';
 import { AuthenticationResponseDto } from '../core/model/auth/AuthenticationResponseDto';
 import { token } from '../core/constants/LocalStorageName';
-import { ToastrService } from 'ngx-toastr';
+import { AppToastrService } from '../service/app-toastr.service';
+import { MessageKind } from '../core/enumerations/MessageKind';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +14,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   private authUrl: string = '/auth';
-  private successLogin: string = 'Witaj w serwisie Factory Manager.';
-  private failedLogin: string = 'Podano nieprawidłowy login lub hasło!';
-
-  public emailPlaceholder: String = 'e-mail...';
-  public passwordPlaceholder: String = 'hasło...';
-  public loginValueButton: String = 'Zaloguj się';
 
   public loginForm: FormGroup;
 
-  constructor(private http: HttpService, private toastr: ToastrService) {}
+  constructor(private http: HttpService, private appToastr: AppToastrService) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -32,8 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    const { http, successLogin, failedLogin, toastr, authUrl } = this;
-
+    const { http, appToastr, authUrl } = this;
+    const { SUCCESS, ERROR } = MessageKind;
     http
       .post<AuthenticationResponseDto>(
         authUrl,
@@ -41,10 +36,10 @@ export class LoginComponent implements OnInit {
       )
       .subscribe({
         next: (s) => {
-          toastr.success(successLogin);
+          appToastr.showMessage('login.message.success', SUCCESS);
           localStorage.setItem(token, s.token);
         },
-        error: (er) => toastr.error(failedLogin),
+        error: () => appToastr.showMessage('login.message.failed', ERROR),
       });
   }
 
