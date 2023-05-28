@@ -4,6 +4,7 @@ import { HttpService } from '../service/http.service';
 import { AuthenticateRequestDto } from '../core/model/auth/AuthenticateRequestDto';
 import { AuthenticationResponseDto } from '../core/model/auth/AuthenticationResponseDto';
 import { token } from '../core/constants/LocalStorageName';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,8 @@ import { token } from '../core/constants/LocalStorageName';
 })
 export class LoginComponent implements OnInit {
   private authUrl: string = '/auth';
+  private successLogin: string = 'Witaj w serwisie Factory Manager.';
+  private failedLogin: string = 'Podano nieprawidłowy login lub hasło!';
 
   public emailPlaceholder: String = 'e-mail...';
   public passwordPlaceholder: String = 'hasło...';
@@ -19,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -29,20 +32,27 @@ export class LoginComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    this.http
+    const { http, successLogin, failedLogin, toastr, authUrl } = this;
+
+    http
       .post<AuthenticationResponseDto>(
-        this.authUrl,
+        authUrl,
         this.prepareAuthenticateRequestDto()
       )
-      .subscribe((s) => {
-        localStorage.setItem(token, s.token);
+      .subscribe({
+        next: (s) => {
+          toastr.success(successLogin);
+          localStorage.setItem(token, s.token);
+        },
+        error: (er) => toastr.error(failedLogin),
       });
   }
 
   private prepareAuthenticateRequestDto(): AuthenticateRequestDto {
+    const { email, password } = this.loginForm.value;
     return {
-      email: this.loginForm.value['email'],
-      password: this.loginForm.value['password'],
+      email: email,
+      password: password,
     };
   }
 }
