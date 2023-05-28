@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="form_header">
+    <img src="assets/images/robot-arm-left.png" />
+    <h2>{{ "login.header.factoryManager" | translate }}</h2>
+    <img src="assets/images/robot-arm-right.png" />
+  </div>
+  <div class="form_body">
+    <input
+      type="email"
+      placeholder="{{ 'login.placeholder.email' | translate }}"
+      formControlName="email"
+    />
+    <input
+      type="password"
+      placeholder="{{ 'login.placeholder.password' | translate }}"
+      formControlName="password"
+    />
+    <input type="submit" value="{{ 'login.value.login' | translate }}" />
+  </div>
+</form>

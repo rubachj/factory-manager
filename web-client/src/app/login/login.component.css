@@ -1,0 +1,41 @@
+form {
+  border-radius: 30px;
+  border: solid 2px;
+  width: 60vh;
+  overflow: hidden;
+}
+
+.form_header {
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 2px black;
+  padding: 5px;
+  background-color: #9def7a;
+}
+
+.form_body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+img {
+  height: 60px;
+  width: 60px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+}
+
+input[type=submit] {
+  background-color: #9def7a;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #b4e79e;
+}
