@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+    <property name="seq_max_value" value="9999999999999999999999999999"/>
+    <property name="seq_increment_by" value="1"/>
+    <changeSet author="rubachj" id="create_warehouse_sequence">
+        <createSequence incrementBy="${seq_increment_by}" maxValue="${seq_max_value}"
+                        sequenceName="SEQ_WAREHOUSE" startValue="${seq_increment_by}"/>
+    </changeSet>
+    <changeSet author="rubachj" id="create_warehouse_table">
+        <createTable tableName="WAREHOUSE">
+            <column name="ID" type="NUMBER(19, 0)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR2(255)"/>
+            <column name="POSTAL_CODE" type="VARCHAR2(6)"/>
+            <column name="CITY" type="VARCHAR2(255)"/>
+            <column name="STREET" type="VARCHAR2(255)"/>
+            <column name="NUMBER_OF_BUILDING" type="VARCHAR2(255)"/>
+            <column name="DESCRIPTION" type="VARCHAR2(2000)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

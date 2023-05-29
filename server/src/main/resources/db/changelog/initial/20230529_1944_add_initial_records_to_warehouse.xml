@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+    <changeSet author="rubachj" id="add_basic_element_warehouse">
+        <insert tableName="WAREHOUSE">
+            <column name="ID" valueComputed="SEQ_WAREHOUSE.NEXTVAL"/>
+            <column name="NAME" value="Magazyn części podstawowych"/>
+            <column name="POSTAL_CODE" value="63-200"/>
+            <column name="CITY" value="Jarocin"/>
+            <column name="STREET" value="Dunajecka"/>
+            <column name="NUMBER_OF_BUILDING" value="123"/>
+            <column name="DESCRIPTION" value="Magazyn części podstawowych, potrzebnych do produkcji komponentów."/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
