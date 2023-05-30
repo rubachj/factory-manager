@@ -4,4 +4,6 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
     <include file="classpath:/db/changelog/initial/20230522_1713_create_table_and_sequence_user_and_user_role.xml"/>
     <include file="classpath:/db/changelog/initial/20230522_2013_add_initial_records_to_app_user_and_role_user.xml"/>
+    <include file="classpath:/db/changelog/initial/20230528_1448_create_table_and_sequence_warehouse.xml"/>
+    <include file="classpath:/db/changelog/initial/20230529_1944_add_initial_records_to_warehouse.xml"/>
 </databaseChangeLog>

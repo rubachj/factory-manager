@@ -7,4 +7,5 @@ import lombok.NoArgsConstructor;
 public class Endpoints {
     public static final String AUTH = "/auth";
     public static final String DEMO = "/demo";
+    public static final String WAREHOUSE = "/warehouse";
 }
