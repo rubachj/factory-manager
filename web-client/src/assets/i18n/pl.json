@@ -14,5 +14,23 @@
     "value": {
       "login": "Zaloguj się"
     }
+  },
+
+  "navbar": {
+    "logo": {
+      "factoryManager": "Factory Manager"
+    },
+    "menu": {
+      "warehouses": "Magazyny",
+      "basicWarehouse": "Magazyn części podstawowych",
+      "orders": "Zamówienia",
+      "newOrder": "Nowa oferta",
+      "statusOrder": "Status",
+      "documents": "Dokumenty",
+      "invoices": "Faktury",
+      "reclamation": "Reklamacje",
+      "clients": "Klienci",
+      "workers": "Pracownicy"
+    }
   }
 }
