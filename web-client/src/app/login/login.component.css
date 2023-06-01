@@ -8,6 +8,7 @@ form {
 .form_header {
   display: flex;
   justify-content: center;
+  align-items: center;
   border-bottom: solid 2px black;
   padding: 5px;
   background-color: #9def7a;
